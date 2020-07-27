@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { IngresoEgreso } from './../../models/ingreso-egreso.model';
 import { Subscription } from 'rxjs';
 import { IngresoEgresoService } from './../../services/ingreso-egreso.service';
 import Swal from 'sweetalert2';
+import { AppStateWithIngreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-detalle',
@@ -15,7 +15,7 @@ export class DetalleComponent implements OnInit, OnDestroy {
   ingEgreSubscription: Subscription;
   ingresosEgresos: IngresoEgreso[] = [];
 
-  constructor(private store: Store<AppState>, private IngEgreSvc: IngresoEgresoService) { }
+  constructor(private store: Store<AppStateWithIngreso>, private IngEgreSvc: IngresoEgresoService) { }
   ngOnInit(): void {
     this.ingEgreSubscription = this.store.select('ingresoEgreso').subscribe(({ items }) =>  this.ingresosEgresos = items );
     this.ingresosEgresos.sort(( a, b ) => {

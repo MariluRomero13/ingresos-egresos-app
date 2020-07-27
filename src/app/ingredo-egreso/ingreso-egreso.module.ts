@@ -8,6 +8,8 @@ import { IngredoEgresoComponent } from './ingredo-egreso.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
+import { StoreModule } from '@ngrx/store';
+import { ingresoEgresoReducer } from './ingreso-egreso.reducer';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { DashboardRoutesModule } from '../dashboard/dashboard-routes.module';
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    DashboardRoutesModule
+    DashboardRoutesModule,
+    StoreModule.forFeature('ingresoEgreso', ingresoEgresoReducer)
   ],
 })
 export class IngresoEgresoModule { }
