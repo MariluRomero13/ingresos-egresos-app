@@ -35,7 +35,7 @@ export class AuthService {
         });
       } else {
         this._user = null;
-        this.authSubscription.unsubscribe();
+        this.authSubscription?.unsubscribe();
         this.store.dispatch(authAction.unSetUser());
         this.store.dispatch(unSetItems()); // Remove ingreso y egreso
       }
